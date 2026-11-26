@@ -27,3 +27,27 @@ The most common approach involves **discrete output tokens** (RT-2, OpenVLA). Ea
 [$\Pi_0$](../Papers/π0.7-%20a%20Steerable%20Generalist%20Robotic%20Foundation%20Model%20with%20Emergent%20Capabilities.pdf) for example, makes use of an alternative approach, outputting **continuous actions** in order to achieve accurate dexterity and high frequency control. **Diffusion Models** start with random noise and gradually clean it into a smooth result, whereas **flow models** draw a direct highway that smoothly slides random noise into the result values. For continuous values, the VLAs head passes its raw numbers straight into one of these smoothers which return continuous mathematical vectors.
 
 > NOTE: VLA models can be organized either as a single end-to-end network (RT-2, OpenVLA, $\Pi_0$) or as a dual-system - one component handling input and another producing output (Groot, Helix).
+
+
+---
+
+## 1. Gr00t
+
+Gro00t - Generalist Robot 00 Technology - is NVIDIA's family of Vision-Language-Action (VLA) foundation models for humanoid and embodied robots, and has evolved across versions like N1, N1.5, N1.6, N1.7 (lateset, until the release of the anticipated N2).
+
+> The point is not the humanoid demo. A manufacturer should care less about whether a model understands a natural-language instruction in isolation and more about whether that instruction can be grounded in fixtures, tolerances, quality rules, safety interlocks, and human approval paths.
+
+Its key design choice is the **split between high-level reasoning and low-level action generation**. Gr00t N1.7 additionally connects an encoder to a flow-matching action transformer and then frames post-training as the path to domain specialization.
+
+This means that GR00T is not a raw high-frequency motor-torque loop by itself. Instead, the stack uses decoupled control:
+- *GR00T (VLA / Policy Layer):* Takes camera images, robot state, and a text prompt (like "move the apple to the plate") and predicts action chunks (for example, a 40-step chunk at 50 Hz = 800 ms) rather than a single step at a time.   
+- *Low-Level / Whole-Body Control Layer:* Keeps the robot balanced and translates commanded targets into high-rate actuator commands.
+
+|Research Line|Layer Strenghtened|Manufacturing Interpretation|
+|:--|:--|:--|
+|Groot N1/N1.7|VLA execution interface|Base policy for turning work instructions into action chunks|
+|SOMA/BONES/Kimodo/MotionBricks|Motion interface and reference generation|Supply chain for turning human motion into robot embodiment references|
+|SONIC|Whole body motion prior|Lower-level stability for walking, posture and bimanual work|
+|GRAIL|Synthettic loco-manipulation demonstration|Task-level humanoid demo candidates from 3D assets and video priors|
+|VIRAL/Doorman|Pixel-to-action sim-to-real|Validation pattern for transferring visual policies to real robots|
+|PLD|Self-improving VLA|Loop for safely absorbing failure-region data in to the policy|

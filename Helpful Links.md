@@ -19,3 +19,11 @@
 |LeRobot|HF Community|https://huggingface.co/lerobot|
 |LeRobot Docs|Documentation|https://huggingface.co/docs/lerobot/main/en/index|
 |Diffusion Theory|LeRobot Tutorial|https://huggingface.co/learn/diffusion-course/unit0/1|
+
+
+### Nvidia
+
+|Title|Type|Link|
+|:--|:--|:--|
+|Physical AI|Tutorial|https://docs.nvidia.com/learning/physical-ai/gr00t-e2e-workflow/latest/index.html|
+|Physical AI|Overview|https://nvidia-physical-ai-robotics.pages.dev/en/ch04|
